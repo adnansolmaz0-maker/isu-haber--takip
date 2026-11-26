@@ -1,0 +1,435 @@
+{
+ "https://www.40birhaber.com": {
+  "rss": [
+   "https://40birhaber.com/feed/",
+   "https://40birhaber.com/comments/feed/"
+  ],
+  "zaman": 1795726444.0956037
+ },
+ "https://www.7x24kocaeli.com": {
+  "rss": [],
+  "zaman": 1795726452.2419994
+ },
+ "https://www.ajansgebze.net": {
+  "rss": [],
+  "zaman": 1795726444.0329876
+ },
+ "https://www.astakoshaber.com": {
+  "rss": [],
+  "zaman": 1795726444.2971184
+ },
+ "https://www.bagimsizkocaeli.com.tr": {
+  "rss": [
+   "https://www.bagimsizkocaeli.com.tr/rss/news"
+  ],
+  "zaman": 1795726444.4989665
+ },
+ "https://www.bizimdarica.com": {
+  "rss": [],
+  "zaman": 1795726448.2043293
+ },
+ "https://www.bizimgazete.com.tr": {
+  "rss": [
+   "https://www.bizimgazete.com.tr/rss"
+  ],
+  "zaman": 1795726444.4605308
+ },
+ "https://www.bolgehaber.com.tr": {
+  "rss": [
+   "https://www.bolgehaber.com.tr/rss.xml"
+  ],
+  "zaman": 1795726449.2396195
+ },
+ "https://www.bugunkocaeli.com.tr": {
+  "rss": [
+   "https://www.bugunkocaeli.com.tr/rss"
+  ],
+  "zaman": 1795726444.1762655
+ },
+ "https://www.buyukkocaeli.com.tr": {
+  "rss": [],
+  "zaman": 1795726468.716546
+ },
+ "https://www.daricagazetesi.com.tr": {
+  "rss": [
+   "https://www.daricagazetesi.com.tr/rss"
+  ],
+  "zaman": 1795726443.825094
+ },
+ "https://www.degisenkocaeli.com": {
+  "rss": [],
+  "zaman": 1795726664.324923
+ },
+ "https://www.dilovasigazetesi.com.tr": {
+  "rss": [],
+  "zaman": 1795726444.942945
+ },
+ "https://www.dilovasihaber.com.tr": {
+  "rss": [],
+  "zaman": 1795726543.5978825
+ },
+ "https://www.dokuzhaber.com": {
+  "rss": [
+   "https://www.dokuzhaber.com/rss"
+  ],
+  "zaman": 1795726444.0011241
+ },
+ "https://www.enkocaeli.com": {
+  "rss": [
+   "https://www.enkocaeli.com/rss.xml"
+  ],
+  "zaman": 1795726444.0284023
+ },
+ "https://www.flaskocaeli.com": {
+  "rss": [],
+  "zaman": 1795726453.9156103
+ },
+ "https://www.gazetegebze.com.tr": {
+  "rss": [],
+  "zaman": 1795726444.8436885
+ },
+ "https://www.gazetemkocaeli.com": {
+  "rss": [],
+  "zaman": 1795726667.0645142
+ },
+ "https://www.gazeteulus.com": {
+  "rss": [],
+  "zaman": 1795726453.5345373
+ },
+ "https://www.gebzehaber.net": {
+  "rss": [
+   "https://www.gebzehaber.net/service/rss.php"
+  ],
+  "zaman": 1795726445.2577646
+ },
+ "https://www.gebzepanorama.com": {
+  "rss": [],
+  "zaman": 1795726456.7633908
+ },
+ "https://www.gercekkocaeli.com.tr": {
+  "rss": [
+   "https://www.gercekkocaeli.com.tr/rss"
+  ],
+  "zaman": 1795726446.8802145
+ },
+ "https://www.golcukdogaturk.com": {
+  "rss": [
+   "https://www.golcukdogaturk.com/rss"
+  ],
+  "zaman": 1795726447.2772126
+ },
+ "https://www.golcukvizyongazetesi.com": {
+  "rss": [
+   "https://golcukvizyongazetesi.com/rss"
+  ],
+  "zaman": 1795726447.0852509
+ },
+ "https://www.golgegazetesi.com": {
+  "rss": [],
+  "zaman": 1795726457.209882
+ },
+ "https://www.guncelkocaeli.com": {
+  "rss": [
+   "https://www.guncel-kocaeli.com/rss"
+  ],
+  "zaman": 1795726448.7811198
+ },
+ "https://www.gundemkocaeli.com.tr": {
+  "rss": [
+   "https://www.gundemkocaeli.com.tr/rss.xml"
+  ],
+  "zaman": 1795726446.5092754
+ },
+ "https://www.habercibiziz.com": {
+  "rss": [],
+  "zaman": 1795726446.9376328
+ },
+ "https://www.habergez.com": {
+  "rss": [
+   "https://www.habergez.com/rss"
+  ],
+  "zaman": 1795726448.503891
+ },
+ "https://www.haberkaramursel.net": {
+  "rss": [
+   "https://www.haberkaramursel.net/feed",
+   "https://www.haberkaramursel.net/comments/feed"
+  ],
+  "zaman": 1795726448.5200062
+ },
+ "https://www.haberkartepe.com": {
+  "rss": [],
+  "zaman": 1795726456.605287
+ },
+ "https://www.haberpi.com": {
+  "rss": [
+   "https://www.haberpi.com/rss"
+  ],
+  "zaman": 1795726449.4783297
+ },
+ "https://www.hedefgazetesi.com.tr": {
+  "rss": [
+   "https://www.hedefgazetesi.com.tr/rss.xml"
+  ],
+  "zaman": 1795726450.1656532
+ },
+ "https://www.istekocaeli.com": {
+  "rss": [
+   "https://www.istekocaeli.com/feed/",
+   "https://www.istekocaeli.com/comments/feed/"
+  ],
+  "zaman": 1795726451.8685272
+ },
+ "https://www.kandiraninsesi.com": {
+  "rss": [],
+  "zaman": 1795726455.6233122
+ },
+ "https://www.karamursel.tv": {
+  "rss": [],
+  "zaman": 1795726450.401301
+ },
+ "https://www.karamurselaktifhaber.com": {
+  "rss": [],
+  "zaman": 1795726466.2365162
+ },
+ "https://www.kocaelibakis.com": {
+  "rss": [
+   "https://www.kocaelibakis.com/rss"
+  ],
+  "zaman": 1795726450.8884077
+ },
+ "https://www.kocaelibarisgazetesi.com": {
+  "rss": [],
+  "zaman": 1795726450.9237876
+ },
+ "https://www.kocaelibilsin.com": {
+  "rss": [],
+  "zaman": 1795726452.1729836
+ },
+ "https://www.kocaelibizimsehir.com": {
+  "rss": [
+   "https://www.kocaelibizimsehir.com/feed/",
+   "https://www.kocaelibizimsehir.com/comments/feed/"
+  ],
+  "zaman": 1795726455.015712
+ },
+ "https://www.kocaelicumhuriyet.com": {
+  "rss": [],
+  "zaman": 1795726452.1650183
+ },
+ "https://www.kocaelidenge.com": {
+  "rss": [
+   "https://www.kocaelidenge.com/rss.xml"
+  ],
+  "zaman": 1795726452.8573453
+ },
+ "https://www.kocaeliduysun.net": {
+  "rss": [
+   "https://www.kocaeliduysun.net/rss"
+  ],
+  "zaman": 1795726469.041134
+ },
+ "https://www.kocaelifikir.com": {
+  "rss": [
+   "https://www.kocaelifikir.com/rss.xml"
+  ],
+  "zaman": 1795726453.6227636
+ },
+ "https://www.kocaeligazete.com": {
+  "rss": [],
+  "zaman": 1795726453.5170746
+ },
+ "https://www.kocaeligazete262.com": {
+  "rss": [],
+  "zaman": 1795726454.0424585
+ },
+ "https://www.kocaeligunes.com": {
+  "rss": [
+   "https://www.kocaeligunes.com/rss"
+  ],
+  "zaman": 1795726455.3692474
+ },
+ "https://www.kocaelihaberdunyasi.com": {
+  "rss": [
+   "https://kocaelihaberdunyasi.com/feed/",
+   "https://kocaelihaberdunyasi.com/comments/feed/",
+   "https://kocaelihaberdunyasi.com/anasayfa/feed/"
+  ],
+  "zaman": 1795726457.371835
+ },
+ "https://www.kocaelihalkgazetesi.com": {
+  "rss": [
+   "https://www.kocaelihalkgazetesi.com/rss.xml"
+  ],
+  "zaman": 1795726455.6856084
+ },
+ "https://www.kocaelihurkus.com": {
+  "rss": [
+   "https://www.kocaelihurkus.com/rss.xml"
+  ],
+  "zaman": 1795726456.3922415
+ },
+ "https://www.kocaelikoz.com": {
+  "rss": [
+   "https://www.kocaelikoz.com/rss.xml"
+  ],
+  "zaman": 1795726456.9058976
+ },
+ "https://www.kocaelilife.com": {
+  "rss": [],
+  "zaman": 1795726465.268586
+ },
+ "https://www.kocaelimeydan.com": {
+  "rss": [
+   "https://www.kocaelimeydan.com/rss"
+  ],
+  "zaman": 1795726457.1189332
+ },
+ "https://www.kocaeliokur.com": {
+  "rss": [],
+  "zaman": 1795726491.373733
+ },
+ "https://www.kocaeliolay.com": {
+  "rss": [
+   "https://www.kocaeliolay.com/rss.xml"
+  ],
+  "zaman": 1795726458.1838202
+ },
+ "https://www.kocaelioncu.com": {
+  "rss": [
+   "https://www.kocaelioncu.com/rss"
+  ],
+  "zaman": 1795726457.716816
+ },
+ "https://www.kocaeliparaf.com": {
+  "rss": [],
+  "zaman": 1795726465.995967
+ },
+ "https://www.kocaelipusula.com": {
+  "rss": [],
+  "zaman": 1795726465.4930565
+ },
+ "https://www.kocaelisonnokta.com": {
+  "rss": [],
+  "zaman": 1795726461.7717154
+ },
+ "https://www.kocaelizirve.com": {
+  "rss": [
+   "https://www.kocaelizirve.com/rss.xml"
+  ],
+  "zaman": 1795726462.0410678
+ },
+ "https://www.korfezmanset.com": {
+  "rss": [
+   "https://www.korfezmanset.com/rss.xml"
+  ],
+  "zaman": 1795726460.3733833
+ },
+ "https://www.kulishaber.com.tr": {
+  "rss": [
+   "https://www.kulishaber.com.tr/rss.xml"
+  ],
+  "zaman": 1795726460.7064314
+ },
+ "https://www.marmaragazetesi.com": {
+  "rss": [
+   "https://www.marmaragazetesi.com/rss.xml"
+  ],
+  "zaman": 1795726464.7507453
+ },
+ "https://www.marmaramanset.com": {
+  "rss": [],
+  "zaman": 1795726461.99222
+ },
+ "https://www.nefesgazetesi.com": {
+  "rss": [
+   "https://www.nefesgazetesi.com/rss"
+  ],
+  "zaman": 1795726462.3743272
+ },
+ "https://www.netkocaeli.com": {
+  "rss": [
+   "https://www.netkocaeli.com/feed"
+  ],
+  "zaman": 1795726463.9918087
+ },
+ "https://www.noktagazetesi.com.tr": {
+  "rss": [],
+  "zaman": 1795726464.7145147
+ },
+ "https://www.onursalhaber.com.tr": {
+  "rss": [
+   "https://onursalhaber.com.tr/feed/",
+   "https://onursalhaber.com.tr/comments/feed/"
+  ],
+  "zaman": 1795726465.209357
+ },
+ "https://www.ozgunkocaeli.com.tr": {
+  "rss": [
+   "https://www.ozgunkocaeli.com.tr/rss"
+  ],
+  "zaman": 1795726463.3922522
+ },
+ "https://www.seskocaeli.com": {
+  "rss": [
+   "https://www.seskocaeli.com/rss.xml"
+  ],
+  "zaman": 1795726463.58079
+ },
+ "https://www.sizinkocaeli.com": {
+  "rss": [
+   "https://www.sizinkocaeli.com/rss.xml"
+  ],
+  "zaman": 1795726463.823984
+ },
+ "https://www.sozkocaeli.com": {
+  "rss": [
+   "https://www.sozkocaeli.com/rss"
+  ],
+  "zaman": 1795726464.6520336
+ },
+ "https://www.starkocaeli.com": {
+  "rss": [
+   "https://www.starkocaeli.com/rss.xml"
+  ],
+  "zaman": 1795726464.8324633
+ },
+ "https://www.tekkocaeli.com": {
+  "rss": [
+   "https://www.tekkocaeli.com/rss"
+  ],
+  "zaman": 1795726467.7618122
+ },
+ "https://www.tumkocaeli.com": {
+  "rss": [],
+  "zaman": 1795726465.0649853
+ },
+ "https://www.tv262.com": {
+  "rss": [],
+  "zaman": 1795726465.0225258
+ },
+ "https://www.ulasanhaber.com": {
+  "rss": [],
+  "zaman": 1795726508.3126893
+ },
+ "https://www.yakintakipgazetesi.com": {
+  "rss": [],
+  "zaman": 1795726474.9930234
+ },
+ "https://www.yenibolgegazetesi.com": {
+  "rss": [],
+  "zaman": 0
+ },
+ "https://www.yenigebze.com": {
+  "rss": [
+   "https://www.yenigebze.com/rss"
+  ],
+  "zaman": 1795726466.3890407
+ },
+ "https://www.yenigolcuk.com": {
+  "rss": [
+   "https://www.yenigolcuk.com/rss.xml"
+  ],
+  "zaman": 1795726467.3750713
+ }
+}
