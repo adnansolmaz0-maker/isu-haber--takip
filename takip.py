@@ -6,6 +6,7 @@ biri geçen YENİ haberleri Telegram (ve/veya ntfy) ile telefona gönderir.
 Daha önce gönderilen haberler gorulenler.json içinde tutulur.
 """
 
+import calendar
 import hashlib
 import json
 import os
@@ -36,6 +37,7 @@ TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 NTFY_KONU = os.environ.get("NTFY_TOPIC", "").strip()
 WHATSAPP_TEL = os.environ.get("WHATSAPP_PHONE", "").strip()
 WHATSAPP_KEY = os.environ.get("WHATSAPP_APIKEY", "").strip()
+RAPOR_SAAT = float(os.environ.get("RAPOR_SAAT", "0") or 0)
 GOOGLE_HABERLER = os.environ.get("GOOGLE_HABERLER", "1").strip() != "0"
 
 ZAMAN_ASIMI = 20
@@ -164,8 +166,10 @@ def rss_haberleri(rss_url: str) -> list[dict]:
         link = e.get("link") or ""
         baslik = e.get("title") or ""
         ozet = BeautifulSoup(e.get("summary", "") or "", "html.parser").get_text(" ")
+        zaman = e.get("published_parsed") or e.get("updated_parsed")
+        ts = calendar.timegm(zaman) if zaman else None
         if link and baslik:
-            haberler.append({"baslik": baslik.strip(), "link": link, "metin": f"{baslik} {ozet}"})
+            haberler.append({"baslik": baslik.strip(), "link": link, "metin": f"{baslik} {ozet}", "ts": ts})
     return haberler
 
 
@@ -194,7 +198,7 @@ def google_haberleri(kelimeler: list[str]) -> list[dict]:
     haberler = []
     for k in kelimeler:
         sorgu = requests.utils.quote(f'"{k}" Kocaeli')
-        url = f"https://news.google.com/rss/search?q={sorgu}+when:1d&hl=tr&gl=TR&ceid=TR:tr"
+        url = f"https://news.google.com/rss/search?q={sorgu}+when:{1 if RAPOR_SAAT <= 24 else 7}d&hl=tr&gl=TR&ceid=TR:tr"
         haberler.extend(rss_haberleri(url))
     return haberler
 
@@ -273,6 +277,29 @@ def bildir(haber: dict, kelimeler: list[str]) -> bool:
 
 # ---------------------------------------------------------------- ana akış
 
+def rapor(haberler: list[dict], desenler) -> None:
+    """Son RAPOR_SAAT saatteki eşleşen haberleri listeler (bildirim göndermez)."""
+    sinir = time.time() - RAPOR_SAAT * 3600
+    goruldu, satirlar = set(), []
+    for h in haberler:
+        eslesme = eslesen_kelimeler(h["metin"], desenler)
+        if not eslesme:
+            continue
+        bk = normalize(h["baslik"])
+        if bk in goruldu:
+            continue
+        ts = h.get("ts")
+        if ts is not None and ts < sinir:
+            continue
+        goruldu.add(bk)
+        kaynak = h.get("kaynak") or urlparse(h["link"]).netloc.replace("www.", "")
+        tarih = time.strftime("%d.%m %H:%M", time.gmtime(ts + 3 * 3600)) if ts else "saat bilinmiyor"
+        satirlar.append((ts or 0, f"RAPOR\t{tarih}\t{kaynak}\t{', '.join(eslesme)}\t{h['baslik']}\t{h['link']}"))
+    for _, satir in sorted(satirlar, reverse=True):
+        print(satir)
+    print(f"RAPOR_TOPLAM\t{len(satirlar)}")
+
+
 def main() -> int:
     siteler = [site_adresi(s) for s in dosya_satirlari(SITELER_DOSYASI)]
     kelimeler = dosya_satirlari(KELIMELER_DOSYASI)
@@ -332,6 +359,10 @@ def main() -> int:
                 h["baslik"], h["kaynak"] = h["baslik"].rsplit(" - ", 1)
         print(f"Google Haberler: {len(g)} haber")
         tum_haberler.extend(g)
+
+    if RAPOR_SAAT > 0:
+        rapor(tum_haberler, desenler)
+        return 0
 
     gonderilen = 0
     baslik_anahtarlari = set()
