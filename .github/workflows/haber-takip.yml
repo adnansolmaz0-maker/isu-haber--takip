@@ -1,0 +1,39 @@
+name: ISU Haber Takip
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # her 5 dakikada bir (GitHub bazen birkaç dakika geciktirebilir)
+  workflow_dispatch:         # elle çalıştırma düğmesi
+
+permissions:
+  contents: write
+
+concurrency:
+  group: haber-takip
+  cancel-in-progress: false
+
+jobs:
+  tara:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Siteleri tara ve bildirim gönder
+        env:
+          WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
+          WHATSAPP_APIKEY: ${{ secrets.WHATSAPP_APIKEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python takip.py
+      - name: Görülen haber listesini kaydet
+        run: |
+          git config user.name "haber-takip-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add gorulenler.json rss_adresleri.json baslangic_bildirimi.txt 2>/dev/null || git add gorulenler.json rss_adresleri.json
+          git diff --cached --quiet || (git commit -m "Görülen haberler güncellendi" && git pull --rebase && git push)

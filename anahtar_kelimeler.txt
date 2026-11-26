@@ -1,0 +1,23 @@
+# Her satıra bir anahtar kelime yazın. # ile başlayan satırlar dikkate alınmaz.
+# Büyük/küçük harf ve Türkçe karakter farkı önemli değildir (İSU = isu = Isu).
+# Ekli halleri de yakalanır (İSU'nun, kanalizasyonda, barajındaki gibi).
+İSU
+İSU Genel Müdürlüğü
+rögar
+logar
+yağmur suyu
+Yuvacık Barajı
+İhsaniye Barajı
+Ballıkaya Barajı
+dere ıslahı
+mazgal
+Namazgah Barajı
+tarımsal sulama
+su zammı
+su fiyatı
+Ali Sağlık
+Burhan Zeydal
+altyapı
+kanalizasyon
+geri kazanım suyu
+gri su
