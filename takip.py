@@ -341,17 +341,18 @@ def main() -> int:
         if k in gorulen_set or bk in gorulen_set or bk in baslik_anahtarlari:
             continue
         eslesme = eslesen_kelimeler(h["metin"], desenler)
-        # Eşleşmeyen haberleri de "görüldü" say; sonradan tekrar işlenmesin
+        baslik_anahtarlari.add(bk)
+        if eslesme and not ilk_calisma:
+            if bildir(h, eslesme):
+                gonderilen += 1
+                print(f"BİLDİRİM: {h['baslik']} -> {h['link']}")
+            else:
+                # Gönderilemeyen haber "görüldü" sayılmaz; sonraki taramada tekrar denenir
+                print(f"Bildirim gönderilemedi (sonra tekrar denenecek): {h['baslik']}")
+                continue
+        # Eşleşmeyen veya gönderilen haberleri "görüldü" say; tekrar işlenmesin
         gorulen_set.update([k, bk])
         gorulenler.extend([k, bk])
-        baslik_anahtarlari.add(bk)
-        if not eslesme or ilk_calisma:
-            continue
-        if bildir(h, eslesme):
-            gonderilen += 1
-            print(f"BİLDİRİM: {h['baslik']} -> {h['link']}")
-        else:
-            print(f"Bildirim gönderilemedi: {h['baslik']}")
 
     if ilk_calisma:
         print("İlk çalışma: mevcut haberler kaydedildi, bildirim gönderilmedi.")
