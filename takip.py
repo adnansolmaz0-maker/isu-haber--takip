@@ -19,6 +19,9 @@ from urllib.parse import urljoin, urlparse
 
 import feedparser
 import requests
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from bs4 import BeautifulSoup
 
 KLASOR = Path(__file__).resolve().parent
@@ -101,8 +104,28 @@ def site_adresi(site: str) -> str:
 
 
 def getir(url: str) -> requests.Response | None:
+    r = _getir(url)
+    if r is None:
+        p = urlparse(url)
+        alternatifler = []
+        if p.netloc.startswith("www."):
+            alternatifler.append(url.replace("://www.", "://", 1))
+        if p.scheme == "https":
+            alternatifler.append(url.replace("https://", "http://", 1))
+        for alt in alternatifler:
+            r = _getir(alt)
+            if r is not None:
+                break
+    return r
+
+
+def _getir(url: str) -> requests.Response | None:
     try:
-        r = requests.get(url, headers=BASLIK, timeout=ZAMAN_ASIMI)
+        try:
+            r = requests.get(url, headers=BASLIK, timeout=ZAMAN_ASIMI)
+        except requests.exceptions.SSLError:
+            # Sertifikası hatalı haber siteleri: yalnızca herkese açık haber okunur
+            r = requests.get(url, headers=BASLIK, timeout=ZAMAN_ASIMI, verify=False)
         if r.status_code == 200 and r.content:
             return r
         HATALAR[urlparse(url).netloc] = f"HTTP {r.status_code}"
@@ -280,6 +303,16 @@ def main() -> int:
                 kayit = {"rss": [], "zaman": 0}  # RSS bozulmuş; sonraki turda tekrar ara
             haberler = sayfa_haberleri(site)
             yontem = "sayfa"
+        if not haberler:
+            # Site doğrudan okunamıyorsa Google Haberler'deki son haberlerine bak
+            alan = urlparse(site).netloc.replace("www.", "")
+            sorgu = requests.utils.quote(f"site:{alan}")
+            haberler = rss_haberleri(
+                f"https://news.google.com/rss/search?q={sorgu}+when:2d&hl=tr&gl=TR&ceid=TR:tr")
+            for h in haberler:
+                if " - " in h["baslik"]:
+                    h["baslik"], h["kaynak"] = h["baslik"].rsplit(" - ", 1)
+            yontem = "Google site:"
         return site, kayit, haberler, yontem
 
     tum_haberler: list[dict] = []
