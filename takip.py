@@ -46,6 +46,7 @@ RSS_YOLLARI = [
     "/rss/son-dakika", "/rss/news", "/sitemap-news.xml", "/index.rss",
 ]
 GORULEN_SINIRI = 20000
+HATALAR: dict[str, str] = {}
 
 
 # ---------------------------------------------------------------- yardımcılar
@@ -104,8 +105,9 @@ def getir(url: str) -> requests.Response | None:
         r = requests.get(url, headers=BASLIK, timeout=ZAMAN_ASIMI)
         if r.status_code == 200 and r.content:
             return r
-    except requests.RequestException:
-        pass
+        HATALAR[urlparse(url).netloc] = f"HTTP {r.status_code}"
+    except requests.RequestException as e:
+        HATALAR[urlparse(url).netloc] = type(e).__name__
     return None
 
 
@@ -284,7 +286,7 @@ def main() -> int:
     with ThreadPoolExecutor(max_workers=16) as havuz:
         for site, kayit, haberler, yontem in havuz.map(site_tara, siteler):
             onbellek[site] = kayit
-            durum = "" if haberler else "  <-- ULAŞILAMADI"
+            durum = "" if haberler else f"  <-- ULAŞILAMADI ({HATALAR.get(urlparse(site).netloc, 'haber linki bulunamadı')})"
             print(f"{site}: {len(haberler)} haber ({yontem}){durum}")
             tum_haberler.extend(haberler)
     RSS_ONBELLEK_DOSYASI.write_text(json.dumps(onbellek, ensure_ascii=False, indent=1))
