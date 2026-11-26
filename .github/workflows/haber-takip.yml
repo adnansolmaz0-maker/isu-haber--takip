@@ -9,13 +9,18 @@ on:
         description: "Rapor: son kaç saatteki eşleşen haberler listelensin (0 = normal tarama)"
         required: false
         default: "0"
+      dongu:
+        description: "1 = 5 saat boyunca 3 dakikada bir tara (sistem kendi kullanır)"
+        required: false
+        default: "0"
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # Zamanlanmış döngü ile elle çalıştırma birbirini beklemesin
-  group: haber-takip-${{ github.event_name }}
+  group: haber-takip-${{ (github.event_name == 'schedule' || github.event.inputs.dongu == '1') && 'dongu' || 'tek' }}
   cancel-in-progress: false
 
 jobs:
@@ -37,6 +42,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           RAPOR_SAAT: ${{ github.event.inputs.rapor_saat || '0' }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "haber-takip-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -50,7 +56,7 @@ jobs:
             git push -q || true
           }
           # Elle çalıştırma ve rapor tek tur çalışır; zamanlanmış çalışma döngüye girer
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$RAPOR_SAAT" != "0" ]; then
+          if { [ "${{ github.event_name }}" != "schedule" ] && [ "${{ github.event.inputs.dongu }}" != "1" ]; } || [ "$RAPOR_SAAT" != "0" ]; then
             python takip.py; kaydet; exit 0
           fi
           bitis=$(( $(date +%s) + 300*60 ))
@@ -60,3 +66,5 @@ jobs:
             kaydet
             sleep 180
           done
+          # GitHub zamanlaması güvenilmez olduğu için bir sonraki döngüyü kendisi başlatır
+          gh workflow run haber-takip.yml --ref main -f dongu=1 || true
