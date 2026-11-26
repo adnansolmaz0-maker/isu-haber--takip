@@ -2,7 +2,7 @@ name: ISU Haber Takip
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # her 5 dakikada bir (GitHub bazen birkaç dakika geciktirebilir)
+    - cron: "*/30 * * * *"  # GitHub zamanlaması seyrek çalıştığından iş kendi içinde döngüyle tarar
   workflow_dispatch:         # elle çalıştırma düğmesi
     inputs:
       rapor_saat:
@@ -14,13 +14,14 @@ permissions:
   contents: write
 
 concurrency:
-  group: haber-takip
+  # Zamanlanmış döngü ile elle çalıştırma birbirini beklemesin
+  group: haber-takip-${{ github.event_name }}
   cancel-in-progress: false
 
 jobs:
   tara:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,7 +29,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Siteleri tara ve bildirim gönder
+      - name: Siteleri tara ve bildirim gönder (yaklaşık 5 saat boyunca 3 dakikada bir)
         env:
           WHATSAPP_PHONE: ${{ secrets.WHATSAPP_PHONE }}
           WHATSAPP_APIKEY: ${{ secrets.WHATSAPP_APIKEY }}
@@ -36,10 +37,26 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           RAPOR_SAAT: ${{ github.event.inputs.rapor_saat || '0' }}
-        run: python takip.py
-      - name: Görülen haber listesini kaydet
         run: |
           git config user.name "haber-takip-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add gorulenler.json rss_adresleri.json baslangic_bildirimi.txt 2>/dev/null || git add gorulenler.json rss_adresleri.json
-          git diff --cached --quiet || (git commit -m "Görülen haberler güncellendi" && git pull --rebase && git push)
+          kaydet() {
+            git add gorulenler.json rss_adresleri.json baslangic_bildirimi.txt 2>/dev/null || git add gorulenler.json rss_adresleri.json
+            git diff --cached --quiet && return 0
+            git commit -q -m "Görülen haberler güncellendi"
+            if ! git pull -q --rebase; then
+              git rebase --abort 2>/dev/null; git reset -q --hard "@{u}"
+            fi
+            git push -q || true
+          }
+          # Elle çalıştırma ve rapor tek tur çalışır; zamanlanmış çalışma döngüye girer
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$RAPOR_SAAT" != "0" ]; then
+            python takip.py; kaydet; exit 0
+          fi
+          bitis=$(( $(date +%s) + 300*60 ))
+          while [ "$(date +%s)" -lt "$bitis" ]; do
+            git pull -q --rebase || { git rebase --abort 2>/dev/null; git reset -q --hard "@{u}"; }
+            python takip.py || echo "Tarama hatası, sonraki turda tekrar denenecek"
+            kaydet
+            sleep 180
+          done
