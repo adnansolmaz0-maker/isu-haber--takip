@@ -132,8 +132,11 @@
   "zaman": 1795726450.1656532
  },
  "https://www.istekocaeli.com": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.istekocaeli.com/feed/",
+   "https://www.istekocaeli.com/comments/feed/"
+  ],
+  "zaman": 1795780550.4703436
  },
  "https://www.kandiraninsesi.com": {
   "rss": [],
@@ -322,8 +325,10 @@
   "zaman": 1795726464.8324633
  },
  "https://www.tekkocaeli.com": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.tekkocaeli.com/rss"
+  ],
+  "zaman": 1795780554.0896337
  },
  "https://www.yenibolgegazetesi.com": {
   "rss": [],
