@@ -120,10 +120,8 @@
   "zaman": 1795726448.5200062
  },
  "https://www.haberpi.com": {
-  "rss": [
-   "https://www.haberpi.com/rss"
-  ],
-  "zaman": 1795726449.4783297
+  "rss": [],
+  "zaman": 0
  },
  "https://www.hedefgazetesi.com.tr": {
   "rss": [
@@ -132,11 +130,8 @@
   "zaman": 1795726450.1656532
  },
  "https://www.istekocaeli.com": {
-  "rss": [
-   "https://www.istekocaeli.com/feed/",
-   "https://www.istekocaeli.com/comments/feed/"
-  ],
-  "zaman": 1795764166.2151382
+  "rss": [],
+  "zaman": 0
  },
  "https://www.kandiraninsesi.com": {
   "rss": [],
