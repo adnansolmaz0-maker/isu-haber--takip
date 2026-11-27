@@ -13,8 +13,10 @@
   "zaman": 1795726444.4989665
  },
  "https://www.bizimgazete.com.tr": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.bizimgazete.com.tr/rss"
+  ],
+  "zaman": 1795784359.1440217
  },
  "https://www.bolgehaber.com.tr": {
   "rss": [
@@ -130,11 +132,8 @@
   "zaman": 1795726450.1656532
  },
  "https://www.istekocaeli.com": {
-  "rss": [
-   "https://www.istekocaeli.com/feed/",
-   "https://www.istekocaeli.com/comments/feed/"
-  ],
-  "zaman": 1795783693.738005
+  "rss": [],
+  "zaman": 0
  },
  "https://www.kandiraninsesi.com": {
   "rss": [],
