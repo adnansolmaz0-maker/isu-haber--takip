@@ -164,8 +164,10 @@
   "zaman": 1795812966.4094818
  },
  "https://www.kocaelibizimsehir.com": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.kocaelibizimsehir.com/rss"
+  ],
+  "zaman": 1795817556.6872094
  },
  "https://www.kocaelidenge.com": {
   "rss": [
