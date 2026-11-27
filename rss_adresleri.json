@@ -57,8 +57,11 @@
   "zaman": 1795812965.5522919
  },
  "https://www.gazetemkocaeli.com": {
-  "rss": [],
-  "zaman": 1795726667.0645142
+  "rss": [
+   "https://kocaeligazetem.com/feed",
+   "https://kocaeligazetem.com/comments/feed"
+  ],
+  "zaman": 1795813213.7353585
  },
  "https://www.gazeteulus.com": {
   "rss": [],
@@ -132,8 +135,11 @@
   "zaman": 1795726450.1656532
  },
  "https://www.istekocaeli.com": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.istekocaeli.com/feed/",
+   "https://www.istekocaeli.com/comments/feed/"
+  ],
+  "zaman": 1795813193.9699426
  },
  "https://www.kandiraninsesi.com": {
   "rss": [],
