@@ -120,8 +120,10 @@
   "zaman": 1795726448.5200062
  },
  "https://www.haberpi.com": {
-  "rss": [],
-  "zaman": 0
+  "rss": [
+   "https://www.haberpi.com/rss"
+  ],
+  "zaman": 1795765015.0739958
  },
  "https://www.hedefgazetesi.com.tr": {
   "rss": [
