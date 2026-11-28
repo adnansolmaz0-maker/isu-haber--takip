@@ -68,8 +68,10 @@
   "zaman": 1795812970.8613482
  },
  "https://www.gebzehaber.net": {
-  "rss": [],
-  "zaman": 1795750999.7077837
+  "rss": [
+   "https://www.gebzehaber.net/service/rss.php"
+  ],
+  "zaman": 1795837677.3298433
  },
  "https://www.gebzepanorama.com": {
   "rss": [],
