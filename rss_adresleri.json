@@ -137,11 +137,8 @@
   "zaman": 1795726450.1656532
  },
  "https://www.istekocaeli.com": {
-  "rss": [
-   "https://www.istekocaeli.com/feed/",
-   "https://www.istekocaeli.com/comments/feed/"
-  ],
-  "zaman": 1795853962.431722
+  "rss": [],
+  "zaman": 0
  },
  "https://www.kandiraninsesi.com": {
   "rss": [],
